@@ -5,12 +5,12 @@ export { MyText }
 
 
 const MyText = (props:any) => {
-    return <Text style={darkTheme.text}>{props.children}</Text>
+    return <Text style={{ ...darkTheme.text, ...props.style }}>{props.children}</Text>
 }
 
 
-const darkTheme = StyleSheet.create({
+const darkTheme = {
     text: {
-        color: 'white'
+        color: 'white',
     }
-})
+}
