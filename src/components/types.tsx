@@ -2,14 +2,14 @@
 
 export {componentType, ButtonType, globalStateType}
 
-type globalStateType = {
+interface globalStateType {
     darkTheme: boolean,
     setDarkTheme: (darkTheme:boolean) => void
 }
 
-type componentType = {style: object, children: any}
+interface componentType {style: object, children: any}
 
-type ButtonType = {
+interface ButtonType {
     title: string,
     onPress: () => void,
     backgroundColor?: string,
