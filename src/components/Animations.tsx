@@ -1,30 +1,34 @@
 import React, { useEffect, useRef } from 'react'
 import { Animated, View, Text, ProgressViewIOSComponent } from 'react-native'
-import { MyText } from './commons'
+import { componentType } from './types'
 
 export { FadeInView, InfiniteRotation }
 
-
-const FadeInView = (props:any) => {
+const FadeInView = (props:componentType) => {
     const fadeAnim = useRef(new Animated.Value(0)).current
 
     useEffect(() => {
-        Animated.timing(
-            fadeAnim,
-            {
-              toValue: 1,
-              duration: 10000,
-              useNativeDriver: true
-            }
-          ).start();
+        Animated.loop(
+            Animated.timing(fadeAnim,
+                {
+                toValue: 1,
+                duration: 3000,
+                useNativeDriver: true
+                }
+            )
+        ).start();
         }, [fadeAnim])
 
     return (
-        <Animated.View style={{...props.style, opacity: fadeAnim }}>{props.children}</Animated.View>
+        <Animated.View style={{...props.style, 
+            opacity: fadeAnim.interpolate({
+                inputRange: [0, 0.5, 1],
+                outputRange: [0, 1, 0]
+            }) }}>{props.children}</Animated.View>
     )
 }
 
-const InfiniteRotation = (props:any) => {
+const InfiniteRotation = (props:componentType) => {
     const rotateAnim = useRef(new Animated.Value(0)).current
 
     useEffect(() => {
@@ -49,4 +53,9 @@ const InfiniteRotation = (props:any) => {
             {props.children}
         </Animated.View>
     )
+}
+
+const Looping = (props:any) => {
+
+    return <View>sad</View>
 }

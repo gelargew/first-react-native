@@ -1,19 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { FadeInView, InfiniteRotation } from './src/components/Animations';
-import { MyText } from './src/components/commons';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, NativeModules } from 'react-native';
+import { TextForm } from './src/screens/FormsAndEvent';
 
-import { Dashboard } from './src/screens/state'
-import { Style } from './src/screens/style'
+import { globalStateType } from './src/components/types';
+
+const { UIManager } = NativeModules
+const globalState = React.createContext<globalStateType | null >(null)
 
 export default function App() {
+  const [darkTheme, setDarkTheme] = useState(true)
   return (
-    <View style={styles.container}>
-      <FadeInView style={{width: 300, height: 200}}>
-        <MyText style={{fontSize: 70}}>Rotating</MyText>
-      </FadeInView>
-    </View>
+    <globalState.Provider value={{darkTheme, setDarkTheme}}>
+      <View style={styles.container}>
+        <TextForm />
+      </View>
+    </globalState.Provider>
   );
 }
 
