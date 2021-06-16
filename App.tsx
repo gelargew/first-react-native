@@ -7,6 +7,7 @@ import { Timer } from './src/screens/Timer';
 import { globalStateType } from './src/components/types';
 import { Dashboard } from './src/screens/Dashboard';
 import { TextForm } from './src/screens/FormsAndEvent';
+import { ListScreen } from './src/screens/Flatlist';
 
 const Drawer = createDrawerNavigator()
 export const globalState = React.createContext({} as globalStateType)
@@ -16,10 +17,11 @@ export default function App() {
   return (
     <globalState.Provider value={{darkTheme, setDarkTheme}}>
       <NavigationContainer >      
-        <Drawer.Navigator openByDefault drawerType='permanent' drawerStyle={{width: 150, backgroundColor: '#222'}} initialRouteName='Timer'>
+        <Drawer.Navigator openByDefault drawerType='permanent' drawerStyle={{width: 150, backgroundColor: 'teal'}} initialRouteName='Timer'>
             <Drawer.Screen name='Dashboard' component={Dashboard} />
             <Drawer.Screen name='Timer' component={Timer} />
             <Drawer.Screen name='Form' component={TextForm} />
+            <Drawer.Screen name='List' component={ListScreen} />
         </Drawer.Navigator>
 
       </NavigationContainer>
