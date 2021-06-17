@@ -7,6 +7,7 @@ import { Dashboard } from './screens/Dashboard';
 import { ListScreen } from './screens/Flatlist';
 import { globalState } from '../App';
 import { LoginScreen } from './screens/Auth';
+import { Kpauli } from './screens/Kpauli';
 
 
 const Drawer = createDrawerNavigator()
@@ -24,6 +25,7 @@ export const Routes = () => {
                 <Drawer.Screen name='Timer' component={Timer} />
                 <Drawer.Screen name='Form' component={TextForm} />
                 <Drawer.Screen name='List' component={ListScreen} />
+                <Drawer.Screen name='Kpauli' component={Kpauli} />
             </Drawer.Navigator>
         </NavigationContainer>
         :
