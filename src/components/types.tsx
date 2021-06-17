@@ -4,7 +4,9 @@ export {componentType, ButtonType, globalStateType}
 
 interface globalStateType {
     darkTheme: boolean,
-    setDarkTheme: (darkTheme:boolean) => void
+    setDarkTheme: (darkTheme:boolean) => void,
+    user: any,
+    setUser: (user:any) => void
 }
 
 interface componentType {style: object, children: any}
